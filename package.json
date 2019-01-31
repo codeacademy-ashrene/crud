@@ -7,12 +7,15 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "jest"
+    "migrationUp": "./node_modules/.bin/sequelize db:migrate",
+    "migrationDown": "./node_modules/.bin/sequelize db:migrate:undo:all",
+    "test": "NODE_ENV=test npm run migrationDown && NODE_ENV=test npm run migrationUp && jest"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "hapi": "^17.8.1",
+    "joi": "^14.3.1",
     "node-modules": "^1.0.1",
     "pg": "^7.8.0",
     "pg-hstore": "^2.3.2",
